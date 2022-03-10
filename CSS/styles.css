@@ -15,7 +15,7 @@ html {
     box-sizing: inherit;
 }
 body{
-    font-family: var(--fuenteparrafo);
+    background-color: #efefef;
     font-size: 1.6rem;
     line-height: 2;
 }
@@ -129,23 +129,30 @@ img{
 
 .nav-en:hover{
     color: var(--fuente2);
+    transition: color 0.3s ease;
 }
 
 /*Contenid*/
 
 @media (min-width: 768px) {
     .contenido-principal{
-        width: 650px;
+        width: 690px;
         margin: 0 auto;
     }
 }
 .entrada {
-    border-bottom: 1px solid var(--gris);
     margin-bottom: 2rem;
     justify-content: center;
-}
-.entrada-contenido{
+    background-color: var(--blanco);
+    padding: 2rem 2rem;
+    cursor: pointer;
+    border-radius: 01.5rem;
+    transition: box-shadow 0.3s ease;
 
+}
+
+article:hover{
+    box-shadow: 0 0.1rem 0.4rem rgba(0, 0, 0, 0.3);
 }
 
 .boton {
@@ -161,11 +168,57 @@ img{
     border: none;
 }
 
+.boton:hover{
+    box-shadow: 0 0.5rem 0.8rem rgba(0, 0, 0, 0.3);
+}
+
 @media (min-width: 768px){
     .boton{
         display: inline-block;
     }
 }
 
+/*Footer*/
 
+.footer{
+    background-color: #000000;
+    padding-bottom: 3rem;
+    margin-top: 4rem;
+}
 
+.footer p{
+    color: var(--blanco);
+}
+
+/*Formulario*/
+.formulario {
+    background-color: var(--blanco);
+    margin: -5rem auto 0 auto;
+    width: 95%;
+    padding: 5rem;
+}
+.campo {
+    display: flex;
+    margin-bottom: 2rem;
+}
+.campo__label {
+    flex: 0 0 9rem;
+    text-align: right;
+    padding-right: 2rem;
+}
+.campo__field {
+    width: 10rem;
+    flex: 1;
+    border: 1px solid var(--gris);
+}
+.campo__field--textarea {
+    height: 10rem;
+}
+
+.form{
+    margin-top: 5rem;
+}
+
+h3 span{
+    font-size: 2rem;
+}
