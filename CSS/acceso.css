@@ -1,0 +1,78 @@
+body{
+    background-image: url(../IMG/program2.jpg);
+}
+
+#Crear_cuenta{
+    background-color: rgb(47, 61, 47);
+    display: block;
+    opacity: 90%;
+    border-radius: 40px;
+    position: relative;
+}
+
+#Iniciar_sesion{
+    background-color: rgb(47, 61, 47);
+    display: block;
+    opacity: 90%;
+    border-radius: 40px;
+    position: relative;
+}
+
+label{
+    justify-content: center;
+    position: absolute;
+    left: 40%;
+    margin: -25px 0 0 -25px;
+    color: #FEF;
+}
+
+input{
+    background-color: #FEF;
+    position: absolute;
+    left: 40%;
+    margin: -25px 0 0 -25px;
+}
+
+button{
+    position: absolute;
+    left: 45%;
+    margin: -25px 0 0 -25px;
+    border-radius: 40px;
+}
+
+button:hover{
+    background-color: #013f03;
+}
+
+@media (min-width: 768px) {
+    #Iniciar_sesion{
+        top: 5%;
+        width: 650px;
+        margin: 0 auto;
+    }
+    #Crear_cuenta{
+        top: 10%;
+        width: 650px;
+        margin: 0 auto;
+    }
+}
+
+
+@media (max-width: 767px) {
+    #Iniciar_sesion{
+        top: 5%;
+        width: 300px;
+        margin: 0 auto;
+    }
+    #Crear_cuenta{
+        top: 10%;
+        width: 300px;
+        margin: 0 auto;
+    }
+    label{
+        left: 25%;
+    }
+    input{
+        left: 25%;
+    }
+}
