@@ -18,6 +18,10 @@ body{
     background-color: #efefef;
     font-size: 1.6rem;
     line-height: 2;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
 }
 
 .contenedor {
@@ -183,7 +187,7 @@ article:hover{
 .footer{
     background-color: #000000;
     padding-bottom: 3rem;
-    margin-top: 4rem;
+    margin-top: auto;
 }
 
 .footer p{
@@ -193,7 +197,7 @@ article:hover{
 /*Formulario*/
 .formulario {
     background-color: var(--blanco);
-    margin: -5rem auto 0 auto;
+    margin: 1rem auto 0 auto;
     width: 95%;
     padding: 5rem;
 }
@@ -221,4 +225,29 @@ article:hover{
 
 h3 span{
     font-size: 2rem;
+}
+
+/*Video*/
+.entrada-video{
+    width: 100%;
+    position: relative;
+}
+
+.entrada-video{
+    padding-bottom: 56.35%;
+    position: relative;
+}
+
+.entrada-video iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+}
+
+.youtube{
+    width: 50%;
+    margin: 0 auto;
 }
