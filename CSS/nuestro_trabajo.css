@@ -6,17 +6,36 @@
     font-weight: normal;
 }
 
-/*------------------------------------------juego------------------------------------------------*/
+/*--------------------------------pagina--------------------------------------------*/
 
-#container{
-    position: absolute;
-    left: 200px;
+#body{
+    background-color: #efefef;
 }
 
+h5{
+    color: #d8a90f;
+}
+
+
+/*------------------------------------------juego------------------------------------------------*/
 
 div > img{
     width: 100%;
     height: 100%;
+}
+
+.container{
+    display: block;
+    position: relative;
+    margin-bottom: 2rem;
+    top: 5%;
+    justify-content: center;
+    background-color: #fff;
+    padding: 2rem 2rem;
+    cursor: pointer;
+    border-radius: 01.5rem;
+    transition: box-shadow 0.3s ease;
+    height: 600px;
 }
 
 #puntuacion{
@@ -29,6 +48,8 @@ div > img{
 
 #Titulo{
     color: #3c2c74;
+    text-align: center;
+    left: 40%;
 }
 
 #over{
@@ -47,11 +68,9 @@ div > img{
     position: absolute;
     width: 700px;
     height: 450px;
-    left: 10%;
-    top: 20%;
-    background-color: aqua;
-    border-radius: 10%;
+    left: 22%;
 }
+
 #pasto{
     position: absolute;
     width: 100%;
@@ -165,4 +184,25 @@ div > img{
 
 #Breturn:hover{
     background-color: #3c2c74;
+}
+
+
+@media (min-width: 767px) {
+    #fondo{
+        display: block;
+    }
+    #mensaje{
+        display:none;
+    }
+}
+
+
+@media (max-width: 767px) {
+    #fondo{
+        display: none;
+    }
+    #mensaje{
+        display:block;
+        color: black;
+    }
 }

@@ -1,3 +1,4 @@
+
 +window.addEventListener("load", () => {
     //Declaración de pajaro, tubos y valores
     let bird = document.getElementById("bird");
@@ -50,7 +51,6 @@
     jugar.style.display = "none";
     //Funcion si se pierde
     function perdiste() {
-  
       tubo1.style.display = "none";
       tubo2.style.display = "none";
       tubo3.style.display = "none";
@@ -60,48 +60,7 @@
       bird.style.display = "none";
       gameover.style.display = "block";
       jugar.style.display = "block";
-      let cookies = document.cookie;
-          let arrCookies = cookies.split(";");
-          if(arrCookies.length >= 2){
-              for(let val of arrCookies){
-                  let nomb = val.split("=");
-                  valRec = nomb[0];
-                  let valGalleta = valRec.split("_");
-                  valCook = parseInt(valGalleta[1])+1;
-              }
-          }
-          let fecha = new Date();
-          let fechaAct = new Date();
-          cadFechAct = fechaAct.toString();
-          fecha.setTime(fecha.getTime()+1000*60*60*24*7);
-          document.cookie="puntaje_"+valCook.toString()+"="+puntaje.toString()+","+cadFechAct+"; expires="+fecha.toGMTString();
-          let jugador;
-          let formFech = [];
-          obtCookies("jugador");
-  
-    function obtCookies(nombre){
-      let cookies = document.cookie;
-      let arrCook = cookies.split(";");
-      for(let val of arrCook){
-        let cookie = val.split("=");
-        if(cookie[0]===nombre){
-          jugador = cookie[1];
-        }
-        else{
-          let puntFech = cookie[1].split(",");  puntaje_2="3,13/20/32"
-          puntaje = puntFech[0];
-          fecha = puntFech[1];
-          formFech = fecha.split(" ");
-          imprimir();
-        }
-      }
-    };
-  function imprimir(){
-    let h1 = document.createElement("h1");
-    let padre = document.getElementById("puntajes");
-    h1.innerText = jugador+": "+puntaje+", "+formFech[2]+"/"+formFech[1]+"/"+formFech[3]+" "+formFech[4];
-    padre.appendChild(h1);
-  };
+
     }
     //Funcion del movimiento del tubo 1 de arriba
     function movimiento() {
@@ -410,4 +369,3 @@
       window.location.reload();
     });
   });
-  
