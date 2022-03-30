@@ -1,3 +1,6 @@
+<?php
+    require_once("./config.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,7 +68,45 @@
             </aside>
             
             <div class="info">
+                <?php
+                //Conexión con base de datos
+                $c = connectdb();
 
+                $consulta = "SELECT Nombre, Apellido_paterno, Apellido_materno, Correo, Nombre_usuario 
+                FROM usuario
+                WHERE Correo='$Correo';";
+
+                //consulta de usuarios
+                $r = mysqli_query($c, $consulta);
+                $row = mysqli_fetch_array($r);
+
+                echo '<table>
+                <thead>
+                    <tr>
+                        <th colspan="2">Nombre: '. $row["Nombre"] .'</th>
+                    </tr>
+                <thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Apellido Paterno: </strong></td>
+                        <td>'. $row["Apellido_paterno"] .'</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Apellido Materno: </strong></td>
+                        <td>'. $row["Apellido_materno"].'</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Correo: </strong></td>
+                        <td>'.$row["Correo"].'</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nombre de Usuario</strong></td>
+                        <td>'. $row["Nombre_usuario"] .'</td>
+                    </tr>
+                </tbody>
+                </table>';
+                mysqli_close($c);
+                ?>
             </div>
         </div>
 
@@ -83,7 +124,6 @@
             </p>
         </div>
     </footer>
-
 
     <!-- JavaScript Bundle with Popper -->
     <!-- JavaScript Bundle with Popper -->
