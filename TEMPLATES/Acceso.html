@@ -40,13 +40,19 @@
         </div>
     </header>
     <div id="Iniciar_sesion">
-        <form action="./../PHP/formularios.php" method="post">
+        <form id="formulario" action="./../PHP/formularios.php" method="post">
             <h4>Inciar Sesion</h4>
-            <label for="Nombre de usuario">Nombre de usuario:</label><br>
-            <input type="text"><br>
-            <label for="Contraseña">Contraseña:</label><br>
-            <input type="password"><br>
-            <a href="./index.html"><button class="boton">Enviar</button></a>
+            <div id="usuario-sesion">
+                <label for="Nombre de usuario">Nombre de usuario:</label><br>
+                <input type="text" name="usuario"><br>
+            </div>
+            
+            <div id="Sesion-password">
+                <label for="Contraseña">Contraseña:</label><br>
+                <input type="password" name="contraseña"><br>
+            </div>
+            
+            <input type="submit" class="boton">
         </form>
         
     </div>
@@ -86,5 +92,7 @@
             </p>
         </div>
     </footer>
+
+    <script src="../JS/funciones.js"></script>
 </body>
 </html>
