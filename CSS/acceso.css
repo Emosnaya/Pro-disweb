@@ -10,6 +10,18 @@ body{
     position: relative;
 }
 
+#Iniciar_sesion h4 {
+    text-align: center;
+    color: var(--blanco);
+    text-transform: uppercase;
+}
+
+#Crear_cuenta h4 {
+    text-align: center;
+    color: var(--blanco);
+    text-transform: uppercase;
+}
+
 #Iniciar_sesion{
     background-color: rgb(47, 61, 47);
     display: block;
@@ -75,4 +87,8 @@ button:hover{
     input{
         left: 25%;
     }
+}
+
+.ft {
+    margin-top: 5rem;
 }
