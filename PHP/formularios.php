@@ -2,38 +2,35 @@
     //conexion conbase de datos
     session_start();
     include("./config.php");
+    $_SESSION["Correo"]=$_POST["Correo"];
     $c = connectdb(); 
     $ingreso=0;
+    $ingreso1=0;
     //valor a variables con lo enviado en forms
+    if(htmlspecialchars($_POST['Correo']))
     $arr= array();
-    $arr[0]= htmlspecialchars($_POST["nombre"]);
-    $arr[1]= htmlspecialchars($_POST["ncuenta"]);
-    $contra= htmlspecialchars($_POST["contraseña"]);
-    $arr[2]= htmlspecialchars($_POST["correo"]);
-    $arr[3]= htmlspecialchars($_POST["numero"]);
-    $arr[4]= htmlspecialchars($_POST["nacimiento"]);
-    $año= htmlspecialchars($_POST["cursa"]);
-    $arr[5]= htmlspecialchars($_POST["apellidop"]);
-    $arr[6]= htmlspecialchars($_POST["apellidom"]);
-    $arr2 = array();
+    $arr[0]= htmlspecialchars($_POST['Nombre']);
+    $arr[1]= htmlspecialchars($_POST['Apepa']);
+    $arr[2]= htmlspecialchars($_POST['Apema']);
+    $arr[3]= htmlspecialchars($_POST['Correo']);
+    $arr[4]= htmlspecialchars($_POST['Telefono']);
+    $arr[5]= htmlspecialchars($_POST['Usuario']);
+    $contra= htmlspecialchars($_POST['Contraseña']);
     $i=0;
     $arr2= array();
-    //codificamos la contraseña
-    $options = [
-        'cost' => 10,
-        'salt' => "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&/()=?"
-     ];
-     $contra = password_hash($contra, PASSWORD_BCRYPT, $options);
 
-    for($b=0; $b<7; $b++){
-         $arr2[$b]=mysqli_real_escape_string($c, $arr[$b]);
-    }
     //Insertamos los valores del form en la tabla de usuarios
     if($i==0){
-        $ingreso = "INSERT INTO usuario(id_usuario, correo, Telefono, fecha_naci,año, contraseña, nombre, apellido_p, apellido_m) VALUES('$arr2[1]', '$arr2[2]', '$arr2[3]', '$arr[4]', '$año', '$contra', '$arr2[0]', '$arr2[5]', '$arr2[6]');";
+        $ingreso = "INSERT INTO usuario(Nombre, Apellido_paterno, Apellido_materno, Correo, Telefono, Nombre_usuario, Contraseña) VALUES('".$arr[0]."', '".$arr[1]."', '".$arr[2]."', '".$arr[3]."', '".$arr[4]."', '".$arr[5]."', '".$contra."')";
         $r = mysqli_query($c, $ingreso);
         echo "exito";
-        $_SESSION["correo"]=$_POST["correo"];
+        echo $arr[0];
+        print_r($arr);
+        $ingreso1 = "SELECT * FROM usuario;";
+        $r1 = mysqli_query($c, $ingreso1);
+        print_r($r1);
+        $_SESSION["Correo"]=$_POST["Correo"];
+        //header("location: ../TEMPLATES/index.html");
     }
     else{
         echo $ingreso;

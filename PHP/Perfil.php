@@ -49,10 +49,11 @@
 
             <!--Navegacion-->
             <nav class="navegacion">
-                <a href="index.html" class="nav-en">Inicio</a>
-                <a href="AcercaDe.html" class="nav-en">Acerca De</a>
-                <a href="Contacto.html" class="nav-en">Contacto</a>
-                <a href="nuestro_trabajo.html" class="nav-en">Nuestro Trabajo</a>
+                <a href="../TEMPLATES/index.html" class="nav-en">Inicio</a>
+                <a href="../TEMPLATES/AcercaDe.html" class="nav-en">Acerca De</a>
+                <a href="../TEMPLATES/Contacto.html" class="nav-en">Contacto</a>
+                <a href="../TEMPLATES/nuestro_trabajo.html" class="nav-en">Nuestro Trabajo</a>
+                <a href="Perfil.php" class="nav-en">Perfil</a>
             </nav>
         </div> <!--Cierre Barra-->
        
@@ -71,37 +72,38 @@
                 <?php
                 //Conexión con base de datos
                 $c = connectdb();
+                session_start();
 
                 $consulta = "SELECT Nombre, Apellido_paterno, Apellido_materno, Correo, Nombre_usuario 
                 FROM usuario
-                WHERE Correo='$Correo';";
+                WHERE Correo=".$_SESSION['Correo'].";";
 
                 //consulta de usuarios
                 $r = mysqli_query($c, $consulta);
-                $row = mysqli_fetch_array($r);
+                $row = mysqli_fetch_array($r, MYSQLI_NUM);
 
                 echo '<table>
                 <thead>
                     <tr>
-                        <th colspan="2">Nombre: '. $row["Nombre"] .'</th>
+                        <th colspan="2">Nombre: '. $row[0] .'</th>
                     </tr>
                 <thead>
                 <tbody>
                     <tr>
                         <td><strong>Apellido Paterno: </strong></td>
-                        <td>'. $row["Apellido_paterno"] .'</td>
+                        <td>'. $row[1] .'</td>
                     </tr>
                     <tr>
                         <td><strong>Apellido Materno: </strong></td>
-                        <td>'. $row["Apellido_materno"].'</td>
+                        <td>'. $row[2].'</td>
                     </tr>
                     <tr>
                         <td><strong>Correo: </strong></td>
-                        <td>'.$row["Correo"].'</td>
+                        <td>'.$row[3].'</td>
                     </tr>
                     <tr>
                         <td><strong>Nombre de Usuario</strong></td>
-                        <td>'. $row["Nombre_usuario"] .'</td>
+                        <td>'. $row[4] .'</td>
                     </tr>
                 </tbody>
                 </table>';
@@ -109,8 +111,6 @@
                 ?>
             </div>
         </div>
-
-        
     </main>
 
     <footer class="footer">
