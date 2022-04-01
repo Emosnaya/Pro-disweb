@@ -1,9 +1,23 @@
+<?php
+
+include 'config.php';
+$con = connectdb();
+
+$id = $_GET['id'];
+
+$sql = "SELECT * FROM usuario WHERE Nombre_usuario = '$id' ";
+$query = mysqli_query($con, $sql);
+
+$row = mysqli_fetch_array($query);
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acceso</title>
+    <title>Actualizar</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -39,47 +53,25 @@
             </nav>
         </div>
     </header>
-    <div id="Iniciar_sesion">
-        <form id="formulario" action="./../PHP/formularios.php" method="post">
-            <h4>Inciar Sesion</h4>
-            <div id="usuario-sesion">
-                <label for="Nombre de usuario">Nombre de usuario:</label><br>
-                <input type="text" name="usuario"><br>
-            </div>
-            
-            <div id="Sesion-password">
-                <label for="Contraseña">Contraseña:</label><br>
-                <input type="password" name="contraseña"><br>
-            </div>
-            
-            <a href=""><button class="boton">Enviar</button></a>
-        </form>
-        
-    </div>
 
     <div id="Crear_cuenta">
-        <form action="./../PHP/formularios.php" method="post">
-            <h4>Crear cuenta</h4>
+        <form action="update.php" method="POST">
+            <h4>Actualizar cuenta</h4>
             <label for="Nombre">Nombre:</label><br>
-            <input type="text" name="Nombre"><br>
+            <input type="text" name="Nombre" value="<?php echo $row['Nombre']?>"><br>
             <label for="Apellido Paterno">Apellido Paterno:</label><br>
-            <input type="text" name="Apepa"><br>
+            <input type="text" name="Apellido_paterno" value="<?php echo $row['Apellido_paterno']?>"><br>
             <label for="Apellido Materno">Apellido Materno:</label><br>
-            <input type="text" name="Apema"><br>
-            <label for="Nombre de usuario">Nombre de usario:</label><br>
-            <input type="text" name="Usuario"><br>
-            <label for="Contraseña">Contraseña:</label><br>
-            <input type="contraseña" name="Contraseña"><br>
+            <input type="text" name="Apellido_materno" value="<?php echo $row['Apellido_materno']?>"><br>
             <label for="Correo">Correo:</label><br>
-            <input type="email" name="Correo"><br>
+            <input type="email" name="Correo" value="<?php echo $row['Correo']?>"><br>
             <label for="Telefono">Telefono:</label><br>
-            <input type="number" name="Telefono"><br>
-            <a href=""><button class="boton" name="Boton">Enviar</button><br></a>
+            <input type="number" name="Telefono" value="<?php echo $row['Telefono']?>"><br>
+            <label for="Contraseña">Contraseña:</label><br>
+            <input type="password" name="Contraseña" value="<?php echo $row['Contraseña']?>"><br>
+            <a><button class="boton" name="Boton" type="submit" value="Actualizar">Actualizar</button><br></a>
         </form>
     </div>
-    <br>
-    <br>
-
 
     <footer class="footer ft">
         <div class="contenedor barra">
