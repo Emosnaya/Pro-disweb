@@ -1,13 +1,11 @@
-<?php
-    require_once("./config.php");
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Perfil</title>
     <!--Funetes-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -70,47 +68,48 @@
             
             <div class="info">
                 <?php
-                //Conexión con base de datos
-                $c = connectdb();
-                session_start();
 
-                $consulta = "SELECT Nombre, Apellido_paterno, Apellido_materno, Correo, Nombre_usuario 
-                FROM usuario
-                WHERE Correo=".$_SESSION['Correo'].";";
+                include '../PHP/config.php';
+                //Conexión con base de datos
+                $con = connectdb();
+                $consulta = "SELECT Nombre, Apellido_paterno, Apellido_materno, Correo, Nombre_usuario FROM usuario";
 
                 //consulta de usuarios
-                $r = mysqli_query($c, $consulta);
-                $row = mysqli_fetch_array($r, MYSQLI_NUM);
-
-                echo '<table>
-                <thead>
-                    <tr>
-                        <th colspan="2">Nombre: '. $row[0] .'</th>
-                    </tr>
-                <thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Apellido Paterno: </strong></td>
-                        <td>'. $row[1] .'</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Apellido Materno: </strong></td>
-                        <td>'. $row[2].'</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Correo: </strong></td>
-                        <td>'.$row[3].'</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Nombre de Usuario</strong></td>
-                        <td>'. $row[4] .'</td>
-                    </tr>
-                </tbody>
-                </table>';
-                mysqli_close($c);
+                $r = mysqli_query($con, $consulta);
+                $row = mysqli_fetch_array($r);
                 ?>
-            </div>
-        </div>
+                <table>
+                    <thead>
+                        <h2>Mi Perfil</h2>
+                    <thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Nombre: </strong></td>
+                            <td><p><?php echo $row['Nombre'] ?></p></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Apellido Paterno: </strong></td>
+                            <td><p><?php echo $row['Apellido_paterno'] ?></p></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Apellido Materno: </strong></td>
+                            <td><p><?php echo $row['Apellido_materno'] ?></p></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Correo: </strong></td>
+                            <td><p><?php echo $row['Correo'] ?></p></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nombre de Usuario:</strong></td>
+                            <td><p><?php echo $row['Nombre_usuario'] ?></p></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> <!--Cierre info-->
+        </div> <!--Cierre grid-->
+        <a href="actualizar.php?id=<?php echo $row['Nombre_usuario']?>" class="boton btn-per1">Editar perfil</a>
+        <a href="delete.php?id=<?php echo $row['Nombre_usuario']?>" class="boton btn-per2">Eliminar perfil</a>
+        <?php mysqli_close($con); ?>
     </main>
 
     <footer class="footer">
